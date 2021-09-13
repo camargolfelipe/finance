@@ -15,6 +15,5 @@ Front-end project using Flutter e persisting Data with GetX.
 
 # Screenshot:
 
-<img src="flutter_01.png"/>
-<img src="flutter_02.png"/>
-<img src="flutter_03.png"/>
+<img src="screenshots.png"/>
+
