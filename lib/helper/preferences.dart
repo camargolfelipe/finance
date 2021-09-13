@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+
+//STORAGE
+final storage = GetStorage();
 
 // LOGIN
-const mainColor = Color(0xFF4e148c);
-const secondColor = Color(0xFF858ae3);
-const thirdColor = Color(0xFF97dffc);
+var mainColor = Color(0xFF1a1a1a);
+var secondColor = Color(0xFF282829);
+var thirdColor = Color(0xFFfff2b2);
 
 const blue = Color(0xFF2196F3);
 const red = Color(0xFFF44336);
@@ -17,9 +21,6 @@ const orange = Color(0xFFFF9800);
 const pink = Color(0xFFE91E63);
 const purple = Color(0xFF9c27b0);
 const bluegrey = Color(0xFF607D8B);
-
-//API
-const api = "";
 
 //OTHERS
 const phoneEmpresa = "4002-8922";

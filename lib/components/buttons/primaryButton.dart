@@ -1,17 +1,14 @@
-import 'package:pattern/helper/preferences.dart';
-import 'package:pattern/helper/routes.dart';
+import 'package:finance/helper/preferences.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
   String title;
-  String route;
+  void Function() route;
   PrimaryButton(this.title, this.route);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        simpleRoute(context, route);
-      },
+      onTap: route,
       child: Container(
         height: 48.0,
         alignment: Alignment.center,

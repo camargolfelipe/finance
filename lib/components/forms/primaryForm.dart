@@ -5,13 +5,16 @@ class PrimaryForm extends StatelessWidget {
   bool obscureText;
   Color color;
   String label;
-  PrimaryForm(this.label, this.controller, this.obscureText, this.color);
+  TextInputType keyboardType;
+  PrimaryForm(this.label, this.controller, this.obscureText, this.color,
+      this.keyboardType);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: TextFormField(
+        keyboardType: keyboardType,
         controller: controller,
         obscureText: obscureText,
         style: TextStyle(color: color),

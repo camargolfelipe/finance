@@ -1,0 +1,19 @@
+
+    {
+       "user":{
+          "name":"name",
+          "finance":"finance",
+          "emergency":"emergency",
+          "trade":"trade"
+       },
+       "expends":[
+          {
+             "name":"Academia",
+             "value":12
+          },
+          {
+             "name":"Comida",
+             "value":250
+          }
+       ]
+    }

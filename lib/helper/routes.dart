@@ -1,8 +1,17 @@
+import 'package:finance/components/transition.dart';
+import 'package:finance/pages/editUser.dart';
+import 'package:finance/pages/home.dart';
+import 'package:finance/pages/qrcode.dart';
+import 'package:finance/pages/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final appRoutes = {
-  '/': (context) => Container(),
+  '/': (context) => TransitionPage(),
+  '/editUser': (context) => EditUserPage(),
+  '/home': (context) => HomePage(),
+  '/qrcode': (context) => QRCodePage(),
+  '/signUp': (context) => SignUp(),
 };
 
 //FUNCTIONS

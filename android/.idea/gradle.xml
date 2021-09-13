@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/../../../DEV/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.3/android" />
+            <option value="$PROJECT_DIR$/../../../DEV/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.0.10/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
