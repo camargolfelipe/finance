@@ -5,6 +5,7 @@ import 'package:finance/helper/preferences.dart';
 import 'package:finance/helper/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class ForeignUser extends StatelessWidget {
   String list;
@@ -21,10 +22,11 @@ class ForeignUser extends StatelessWidget {
     var trade = storage.read('trade');
     var a = jsonDecode(list);
     return Template(false, [
-      ForeignItems('Nome:', a["user"]["name"]),
-      ForeignItems('Salário:', a["user"]["finance"] + ',00'),
-      ForeignItems('Perc. de Emergência:', a["user"]["emergency"] + '%'),
-      ForeignItems('Perc. de Investimento:', a["user"]["trade"] + '%'),
+      ForeignItems('Nome'.tr + ':', a["user"]["name"]),
+      ForeignItems('Salário'.tr + ':', a["user"]["finance"] + ',00'),
+      ForeignItems(
+          'Perc. de Emergência'.tr + ':', a["user"]["emergency"] + '%'),
+      ForeignItems('Perc. de Investimento'.tr + ':', a["user"]["trade"] + '%'),
       Container(
         decoration: BoxDecoration(
             color: thirdColor.withOpacity(0.1),
@@ -40,7 +42,7 @@ class ForeignUser extends StatelessWidget {
         ),
       ),
       SizedBox(height: 64.0),
-      PrimaryButton('Transferir Informações', () {
+      PrimaryButton('Transferir Informações'.tr, () {
         newExpenses.addAll(expenses);
         newExpenses.addAll(a["expends"]);
         storage.write('despesas', newExpenses);

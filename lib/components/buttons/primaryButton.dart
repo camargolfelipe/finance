@@ -15,7 +15,7 @@ class PrimaryButton extends StatelessWidget {
         margin: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
-            color: black.withOpacity(0.25),
+            color: black.withOpacity(0.12),
             spreadRadius: 2,
             blurRadius: 10,
             offset: Offset(3, 5), // changes position of shadow

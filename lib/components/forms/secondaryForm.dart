@@ -1,5 +1,6 @@
 import 'package:finance/helper/preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SecondaryForm extends StatelessWidget {
   String label;
@@ -7,14 +8,21 @@ class SecondaryForm extends StatelessWidget {
   int maxLines;
   IconData prefixIcon;
   TextInputType keyboardType;
+  bool isNumberRestrict;
+
   SecondaryForm(this.label, this.controller, this.maxLines, this.prefixIcon,
-      this.keyboardType);
+      this.keyboardType, this.isNumberRestrict);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 56.0,
       margin: EdgeInsets.all(8),
       child: TextFormField(
+        inputFormatters: isNumberRestrict
+            ? [
+                new FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+              ]
+            : [],
         keyboardType: keyboardType,
         maxLines: maxLines,
         controller: controller,

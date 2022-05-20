@@ -3,8 +3,8 @@ import 'package:finance/components/widget/projection.dart';
 import 'package:finance/helper/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:finance/components/template.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             flex: 9,
-            child: Text("Olá ${storage.read('name')}",
+            child: Text("Olá".tr + ' ${storage.read('name')}',
                 style: TextStyle(color: thirdColor, fontSize: 24.0)),
           ),
           Expanded(
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
       Divider(color: thirdColor),
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text("Suas despesas",
+        child: Text("Suas despesas".tr,
             style: TextStyle(
                 color: thirdColor,
                 fontSize: 16.0,
@@ -77,8 +77,8 @@ class _HomePageState extends State<HomePage> {
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    Charts("Emergência", int.parse(emergency), isVisible),
-                    Charts("Investimento", int.parse(trade), isVisible),
+                    Charts("Emergência".tr, int.parse(emergency), isVisible),
+                    Charts("Investimento".tr, int.parse(trade), isVisible),
                   ],
                 )),
             Divider(),
@@ -99,16 +99,16 @@ class _HomePageState extends State<HomePage> {
       Row(children: [
         Expanded(
             child: HomeItems(
-                "Dinheiro livre :",
+                "Dinheiro livre".tr + " :",
                 isVisible,
-                "R\$ ${int.parse(storage.read('finance')) - (total() + int.parse(trade) + int.parse(emergency))}",
+                "\$ ${int.parse(storage.read('finance')) - (total() + int.parse(trade) + int.parse(emergency))}",
                 black)),
         Expanded(
-            child: HomeItems("Dinheiro Investido :", isVisible,
-                "R\$ ${int.parse(trade) + int.parse(emergency)}", blue)),
+            child: HomeItems("Dinheiro Investido".tr + " :", isVisible,
+                "\$ ${int.parse(trade) + int.parse(emergency)}", blue)),
         Expanded(
             child: HomeItems(
-                "Total de despesas :", isVisible, "R\$ ${total()}", red))
+                "Total de despesas".tr + " :", isVisible, "\$ ${total()}", red))
       ]),
       Projection(isVisible),
       SizedBox(height: 32.0)
@@ -142,7 +142,7 @@ class HomeItems extends StatelessWidget {
                       color: thirdColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 8.0)),
-              Text(isVisible ? value : "R\$ -",
+              Text(isVisible ? value : "\$ -",
                   style: TextStyle(
                       color: thirdColor,
                       fontWeight: FontWeight.bold,

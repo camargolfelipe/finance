@@ -5,6 +5,9 @@ import 'package:finance/helper/preferences.dart';
 import 'package:finance/helper/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+
+import '../helper/functions.dart';
 
 class EditUserPage extends StatelessWidget {
   TextEditingController name = TextEditingController();
@@ -17,15 +20,20 @@ class EditUserPage extends StatelessWidget {
     List a = storage.read("despesas") != null ? storage.read("despesas") : [];
 
     return Template(false, [
-      Text("Editar dados", style: TextStyle(color: thirdColor, fontSize: 24.0)),
+      Text("Editar dados".tr,
+          style: TextStyle(color: thirdColor, fontSize: 24.0)),
       Divider(),
-      EditUserItems(name, 'Nome :: ${storage.read('name')} ', "name"),
       EditUserItems(
-          finance, 'Salário :: ${storage.read('finance')},00', "finance"),
-      EditUserItems(emergency, 'Emergência :: ${storage.read('emergency')}%',
-          "emergency"),
+          name, 'Nome'.tr + ' :: ${storage.read('name')} ', "name", false),
+      EditUserItems(finance, 'Salário'.tr + ' :: ${storage.read('finance')},00',
+          "finance", true),
       EditUserItems(
-          trade, 'Investimento :: ${storage.read('trade')}%', "trade"),
+          emergency,
+          'Emergência'.tr + ' :: ${storage.read('emergency')}%',
+          "emergency",
+          true),
+      EditUserItems(trade, 'Investimento'.tr + ' :: ${storage.read('trade')}%',
+          "trade", true),
       Divider(),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -46,7 +54,10 @@ class EditUserItems extends StatelessWidget {
   TextEditingController _controller;
   String label;
   String storageName;
-  EditUserItems(this._controller, this.label, this.storageName);
+  bool isNumberRestrict;
+
+  EditUserItems(
+      this._controller, this.label, this.storageName, this.isNumberRestrict);
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +66,25 @@ class EditUserItems extends StatelessWidget {
         Expanded(
           flex: 8,
           child: SecondaryForm(label, _controller, 1,
-              FontAwesomeIcons.pencilAlt, TextInputType.name),
+              FontAwesomeIcons.pencilAlt, TextInputType.name, isNumberRestrict),
         ),
         Expanded(
             flex: 2,
-            child: PrimaryButton('EDITAR', () {
-              storage.write(storageName, _controller.text);
-              simpleRoute(context, '/editUser');
+            child: PrimaryButton('EDITAR'.tr, () {
+              if (_controller.text.isEmpty) {
+                simpleRoute(context, '/editUser');
+                dialog(
+                    context,
+                    'Preencha todos os campos'.tr,
+                    Text(
+                      'É necessário preencher todos os campos para continuar o cadastro'
+                          .tr,
+                      style: TextStyle(color: white),
+                    ));
+              } else {
+                storage.write(storageName, _controller.text);
+                simpleRoute(context, '/editUser');
+              }
             })),
       ],
     );
@@ -95,7 +118,7 @@ class ExpensesItems extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Text(
-              'R\$ $value',
+              '\$ $value',
               style: TextStyle(color: white),
             ),
           ),

@@ -1,6 +1,6 @@
-import 'package:finance/helper/functions.dart';
 import 'package:finance/helper/preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Charts extends StatelessWidget {
   String label;
@@ -10,11 +10,11 @@ class Charts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var c = (quantity / int.parse(storage.read('finance'))) * 100;
-
-    var a = 6 + int.parse(perc(c));
-    var aa = 6 - int.parse(perc(c));
-    var value = int.parse(storage.read('finance')) * (c / 100);
+    var valorTotal = quantity / int.parse(storage.read("finance"));
+    var valorDespesa = isVisible
+        ? 'R\$ $quantity,00'
+        : '${(valorTotal * 100).toStringAsFixed(1)}%';
+    var percentage = double.parse(valorTotal.toString());
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -22,31 +22,25 @@ class Charts extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
-            flex: 4,
-            child: Text(label,
-                style: TextStyle(color: thirdColor, fontSize: 14.0)),
-          ),
+              flex: 3,
+              child: Text(label,
+                  style: TextStyle(color: thirdColor, fontSize: 13.0))),
           Expanded(
-            flex: a,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              height: 24.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: secondColor.withOpacity(0.5)),
+            flex: 9,
+            child: LinearPercentIndicator(
+              curve: Curves.slowMiddle,
+              animation: true,
+              lineHeight: 20.0,
+              animationDuration: 1500,
+              percent: percentage > 0.99 ? 1.0 : percentage,
+              progressColor: percentage > 0.99 ? red : secondColor,
+              backgroundColor: Colors.transparent,
             ),
           ),
           Expanded(
-              flex: aa,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  isVisible
-                      ? " R\$${value.toStringAsFixed(2)}"
-                      : "${c.toStringAsFixed(2)}%",
-                  style: TextStyle(color: thirdColor, fontSize: 8.0),
-                ),
-              ))
+              flex: 2,
+              child: Text(valorDespesa.toString(),
+                  style: TextStyle(color: thirdColor, fontSize: 8.0))),
         ],
       ),
     );

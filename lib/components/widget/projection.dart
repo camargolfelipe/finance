@@ -1,5 +1,6 @@
 import 'package:finance/helper/preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Projection extends StatelessWidget {
   bool isVisible;
@@ -25,27 +26,27 @@ class Projection extends StatelessWidget {
               children: [
                 Expanded(
                     child: Text(
-                  "Tempo",
+                  "Tempo".tr,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: thirdColor,
-                      fontSize: 14.0),
+                      fontSize: 12.0),
                 )),
                 Expanded(
                     child: Text(
-                  "Emergência (${storage.read("emergency")}%)",
+                  "Emergência".tr + " (${storage.read("emergency")}%)",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: thirdColor,
-                      fontSize: 14.0),
+                      fontSize: 12.0),
                 )),
                 Expanded(
                     child: Text(
-                  "Investimento (${storage.read("trade")}%)",
+                  "Investimento".tr + " (${storage.read("trade")}%)",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: thirdColor,
-                      fontSize: 14.0),
+                      fontSize: 12.0),
                 )),
               ],
             ),
@@ -53,7 +54,9 @@ class Projection extends StatelessWidget {
         ),
         Divider(),
         Text(
-          "*Os valores abaixo não possuem nenhuma porcentagem de rendimento.",
+          "*" +
+              "Os valores abaixo não possuem nenhuma porcentagem de rendimento."
+                  .tr,
           style: TextStyle(
               fontWeight: FontWeight.bold, color: thirdColor, fontSize: 8.0),
         ),
@@ -64,21 +67,21 @@ class Projection extends StatelessWidget {
           child: Column(
             children: [
               ProjectionItems(
-                  '6 meses',
-                  isVisible ? 'R\$ ${emergency * 6}' : "R\$ -",
-                  isVisible ? 'R\$ ${trade * 6}' : "R\$ -"),
+                  '6 ' + 'meses'.tr,
+                  isVisible ? '\$ ${emergency * 6}' : "\$ -",
+                  isVisible ? '\$ ${trade * 6}' : "\$ -"),
               ProjectionItems(
-                  '1 ano',
-                  isVisible ? 'R\$ ${emergency * 12}' : "R\$ -",
-                  isVisible ? 'R\$ ${trade * 12}' : "R\$ -"),
+                  '1 ' + 'ano'.tr,
+                  isVisible ? '\$ ${emergency * 12}' : "\$ -",
+                  isVisible ? '\$ ${trade * 12}' : "\$ -"),
               ProjectionItems(
-                  '3 anos ',
-                  isVisible ? 'R\$ ${emergency * 32}' : "R\$ -",
-                  isVisible ? 'R\$ ${trade * 32}' : "R\$ -"),
+                  '3 ' + 'anos'.tr,
+                  isVisible ? '\$ ${emergency * 32}' : "\$ -",
+                  isVisible ? '\$ ${trade * 32}' : "\$ -"),
               ProjectionItems(
-                  '5 anos',
-                  isVisible ? 'R\$ ${emergency * 60}' : "R\$ -",
-                  isVisible ? 'R\$ ${trade * 60}' : "R\$ -"),
+                  '5 ' + 'anos'.tr,
+                  isVisible ? '\$ ${emergency * 60}' : "\$ -",
+                  isVisible ? '\$ ${trade * 60}' : "\$ -"),
             ],
           ),
         )
@@ -106,7 +109,7 @@ class ProjectionItems extends StatelessWidget {
                 time,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
+                    fontSize: 13.0,
                     color: thirdColor.withOpacity(0.7)),
               )),
               Expanded(
@@ -114,7 +117,7 @@ class ProjectionItems extends StatelessWidget {
                 emergency,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
+                    fontSize: 13.0,
                     color: thirdColor.withOpacity(0.7)),
               )),
               Expanded(
@@ -122,7 +125,7 @@ class ProjectionItems extends StatelessWidget {
                 trade,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
+                    fontSize: 13.0,
                     color: thirdColor.withOpacity(0.7)),
               )),
             ],

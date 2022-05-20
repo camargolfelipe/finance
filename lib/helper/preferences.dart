@@ -21,11 +21,3 @@ const orange = Color(0xFFFF9800);
 const pink = Color(0xFFE91E63);
 const purple = Color(0xFF9c27b0);
 const bluegrey = Color(0xFF607D8B);
-
-//OTHERS
-const phoneEmpresa = "4002-8922";
-const emailEmpresa = "contato@setytecnologias.com";
-const siteEmpresa = "https://setytecnologia.com.br/";
-const linkedInEmpresa = "https://www.linkedin.com/company/setytecnologia/";
-const facebookEmpresa = "https://www.facebook.com/SetyTecnologia";
-const InstagramEmpresa = "https://www.instagram.com/sety.tecnologia/";

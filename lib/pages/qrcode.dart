@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:scan/scan.dart';
+import 'package:get/get.dart';
 
 class QRCodePage extends StatelessWidget {
   ScanController _controller = ScanController();
@@ -51,7 +52,8 @@ class QRCodePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                    "Use esse QR Code para transferir suas informações ou compartilhar com seu conjuge. ",
+                    "Use esse QR Code para transferir suas informações ou compartilhar com seu conjuge. "
+                        .tr,
                     style: TextStyle(color: thirdColor, fontSize: 18.0)),
               ),
               Divider(),
@@ -84,16 +86,17 @@ class QRCodePage extends StatelessWidget {
                       builder: (BuildContext context) => AlertDialog(
                             backgroundColor: secondColor,
                             title: Text(
-                                'Deseja unir seus dados com ${a["user"]["name"]}?',
+                                'Deseja unir seus dados com'.tr +
+                                    ' ${a["user"]["name"]}?',
                                 style: TextStyle(
                                   color: thirdColor,
                                   fontSize: 12.0,
                                 )),
                             actions: [
-                              PrimaryButton('SIM', () {
+                              PrimaryButton('SIM'.tr, () {
                                 constructRoute(context, ForeignUser(data));
                               }),
-                              PrimaryButton('NÃO', () {
+                              PrimaryButton('NÃO'.tr, () {
                                 Navigator.pop(context);
                               }),
                             ],
