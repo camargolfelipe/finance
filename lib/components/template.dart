@@ -92,21 +92,18 @@ class _TemplateState extends State<Template> {
                                   child: PrimaryButton('PT-BR', () {
                                     Get.updateLocale(Locale('pt', 'BR'));
                                     // storage.write("lang", [Locale('pt', 'BR')]);
-                                    Navigator.pop(context);
                                   }),
                                 ),
                                 Expanded(
                                   child: PrimaryButton('EN-US', () {
                                     Get.updateLocale(Locale('en', 'US'));
                                     // storage.write("lang", [Locale('en', 'US')]);
-                                    Navigator.pop(context);
                                   }),
                                 ),
                                 Expanded(
                                   child: PrimaryButton('ES', () {
                                     Get.updateLocale(Locale('es', 'ES'));
                                     // storage.write("lang", [Locale('es', 'ES')]);
-                                    Navigator.pop(context);
                                   }),
                                 ),
                               ]),
